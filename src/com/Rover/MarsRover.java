@@ -8,7 +8,8 @@ public class MarsRover{
         this.position = position;
     }
 
-    public Position getPosition() {
-        return position;
+    @Override
+    public String toString() {
+        return "X: "+position.position_x+" Y: "+position.position_y+" Direction: "+position.direction;
     }
 }

@@ -2,18 +2,18 @@ package com.Rover;
 
 public enum Command {
     L{
-        public DirectionHandler rotateLeft(Direction direction){
+        @Override
+        public DirectionHandler performAction(Direction direction){
             DirectionHandler handler = new DirectionHandler(direction);
             return handler.rotateLeft();
         }
     },
     R{
-        public DirectionHandler rotateRight(Direction direction){
+        @Override
+        public DirectionHandler performAction(Direction direction){
             DirectionHandler handler = new DirectionHandler(direction);
             return handler.rotateRight();
         }
-    },
-    M{
-
-    }
+    };
+    public abstract DirectionHandler performAction(Direction direction);
 }
