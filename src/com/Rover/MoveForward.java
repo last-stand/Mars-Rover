@@ -5,18 +5,20 @@ public class MoveForward implements CommandRunner {
     public void performAction(MarsRover marsRover) {
         switch (marsRover.direction){
             case N:
-                marsRover.position_y++;
+                if(marsRover.coordinates.y < marsRover.plateau.maxCoordinates.y)
+                    marsRover.coordinates.y++;
                 break;
             case S:
-                if(marsRover.position_y > 0)
-                    marsRover.position_y--;
+                if(marsRover.coordinates.y > 0)
+                    marsRover.coordinates.y--;
                 break;
             case E:
-                marsRover.position_x++;
+                if(marsRover.coordinates.x < marsRover.plateau.maxCoordinates.x)
+                    marsRover.coordinates.x++;
                 break;
             case W:
-                if(marsRover.position_x > 0)
-                    marsRover.position_x--;
+                if(marsRover.coordinates.x > 0)
+                    marsRover.coordinates.x--;
                 break;
         }
     }

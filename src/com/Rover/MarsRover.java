@@ -1,19 +1,21 @@
 package com.Rover;
 
-public class MarsRover{
-    public int position_x;
-    public int position_y;
-    public Direction direction;
+import java.awt.Point;
 
-    public MarsRover(int position_x, int position_y, String direction) {
-        this.position_x = position_x;
-        this.position_y = position_y;
+public class MarsRover{
+    public Point coordinates;
+    public Direction direction;
+    public Plateau plateau;
+
+    public MarsRover(int position_x, int position_y, String direction, Plateau plateau) {
+        this.coordinates = new Point(position_x, position_y);
         this.direction = Direction.valueOf(direction);
+        this.plateau = plateau;
     }
 
     @Override
     public String toString() {
-        return "X: "+this.position_x+" Y: "+this.position_y+" Direction: "+this.direction;
+        return "X: "+this.coordinates.x+" Y: "+this.coordinates.y+" Direction: "+this.direction;
     }
 
     public void runCommands(String commandString){
