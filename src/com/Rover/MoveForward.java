@@ -1,25 +1,29 @@
 package com.Rover;
 
+import java.awt.Point;
+
 public class MoveForward implements CommandRunner {
     @Override
     public void performAction(MarsRover marsRover) {
-        switch (marsRover.direction){
+        Point location = marsRover.getCoordinates();
+        switch (marsRover.getDirection()){
             case N:
-                if(marsRover.coordinates.y < marsRover.plateau.maxCoordinates.y)
-                    marsRover.coordinates.y++;
+                if(location.y < marsRover.getPlateau().getMaxCoordinates().y)
+                    location.y++;
                 break;
             case S:
-                if(marsRover.coordinates.y > 0)
-                    marsRover.coordinates.y--;
+                if(location.y > 0)
+                    location.y--;
                 break;
             case E:
-                if(marsRover.coordinates.x < marsRover.plateau.maxCoordinates.x)
-                    marsRover.coordinates.x++;
+                if(location.x < marsRover.getPlateau().getMaxCoordinates().x)
+                    location.x++;
                 break;
             case W:
-                if(marsRover.coordinates.x > 0)
-                    marsRover.coordinates.x--;
+                if(marsRover.getCoordinates().x > 0)
+                    location.x--;
                 break;
         }
+        marsRover.setCoordinates(location);
     }
 }

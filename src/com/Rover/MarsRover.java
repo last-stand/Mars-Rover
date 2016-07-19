@@ -3,9 +3,9 @@ package com.Rover;
 import java.awt.Point;
 
 public class MarsRover{
-    public Point coordinates;
-    public Direction direction;
-    public Plateau plateau;
+    private Point coordinates;
+    private Direction direction;
+    private Plateau plateau;
 
     public MarsRover(int position_x, int position_y, String direction, Plateau plateau) {
         this.coordinates = new Point(position_x, position_y);
@@ -13,9 +13,24 @@ public class MarsRover{
         this.plateau = plateau;
     }
 
-    @Override
-    public String toString() {
-        return "X: "+this.coordinates.x+" Y: "+this.coordinates.y+" Direction: "+this.direction;
+    public Point getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(Point coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    public Direction getDirection() {
+        return direction;
+    }
+
+    public void setDirection(String direction) {
+        this.direction = Direction.valueOf(direction);
+    }
+
+    public Plateau getPlateau() {
+        return plateau;
     }
 
     public void runCommands(String commandString){
@@ -34,5 +49,10 @@ public class MarsRover{
                     throw new IllegalArgumentException("Invalid command: " + command);
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return "X: "+this.coordinates.x+" Y: "+this.coordinates.y+" Direction: "+this.direction;
     }
 }

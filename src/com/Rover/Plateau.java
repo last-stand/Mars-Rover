@@ -2,9 +2,13 @@ package com.Rover;
 import java.awt.Point;
 
 public class Plateau {
-        public Point maxCoordinates;
+    private Point maxCoordinates;
 
-        public Plateau(int x, int y){
-            this.maxCoordinates = new Point(x, y);
-        }
+    public Plateau(int x, int y){
+        this.maxCoordinates = new Point(x, y);
+    }
+
+    public Point getMaxCoordinates() {
+        return maxCoordinates;
+    }
 }
