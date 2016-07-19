@@ -1,33 +1,36 @@
 package com.Rover;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class MarsRover{
-    private Position position;
+    public int position_x;
+    public int position_y;
+    public Direction direction;
 
-    public MarsRover(Position position) {
-        this.position = position;
+    public MarsRover(int position_x, int position_y, String direction) {
+        this.position_x = position_x;
+        this.position_y = position_y;
+        this.direction = Direction.valueOf(direction);
     }
 
     @Override
     public String toString() {
-        return "X: "+position.position_x+" Y: "+position.position_y+" Direction: "+position.direction;
+        return "X: "+this.position_x+" Y: "+this.position_y+" Direction: "+this.direction;
     }
 
     public void runCommands(String commandString){
-        Map<String,Command> commandMap = commandMapper();
         for (String command : commandString.split("")) {
-            Command commandToExecute = commandMap.get(command);
-            this.position = commandToExecute.performAction(position).getInitialPosition();
+            switch (command) {
+                case "L":
+                    new ActionHandler(new RotateLeft()).executeCommand(this);
+                    break;
+                case "R":
+                    new ActionHandler(new RotateRight()).executeCommand(this);
+                    break;
+                case "M":
+                    new ActionHandler(new MoveForward()).executeCommand(this);
+                    break;
+                default:
+                    throw new IllegalArgumentException("Invalid command: " + command);
+            }
         }
-    }
-
-    private Map<String,Command> commandMapper(){
-        Map<String,Command> commandMap = new HashMap<String, Command>();
-        for (Command command : Command.values()) {
-            commandMap.put(command.toString(),command);
-        }
-        return commandMap;
     }
 }

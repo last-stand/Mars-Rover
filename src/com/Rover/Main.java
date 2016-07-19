@@ -3,8 +3,7 @@ package com.Rover;
 public class Main {
 
     public static void main(String[] args) {
-        Position position = new Position(1,2,Direction.N);
-        MarsRover rover = new MarsRover(position);
+        MarsRover rover = new MarsRover(1, 2, "N");
         rover.runCommands("LMLMLMLMM");
         System.out.println(rover.toString());
     }
