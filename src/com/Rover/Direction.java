@@ -3,8 +3,8 @@ package com.Rover;
 public enum  Direction {
     E("S", "N"), W("N", "S"), N("E", "W"), S("W", "E");
 
-    String right;
-    String left;
+    private String right;
+    private String left;
 
     Direction(String right, String left) {
         this.right = right;
